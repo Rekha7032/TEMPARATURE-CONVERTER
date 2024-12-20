@@ -1,0 +1,125 @@
+# TEMPARATURE-CONVERTER
+#EXPECTED OUTPUT:Temperature Converter
+Select the unit to convert from:
+1. Celsius
+2. Fahrenheit
+3. Kelvin
+Enter the number of the unit to convert from (1/2/3): 1
+Enter the temperature value to convert: 25
+Select the unit to convert to:
+1. Celsius
+2. Fahrenheit
+3. Kelvin
+Enter the number of the unit to convert to (1/2/3): 2
+25.0 Celsius is 77.0 Fahrenheit
+
+Do you want to convert another temperature? (yes/no): yes
+
+Temperature Converter
+Select the unit to convert from:
+1. Celsius
+2. Fahrenheit
+3. Kelvin
+Enter the number of the unit to convert from (1/2/3): 2
+Enter the temperature value to convert: 32
+Select the unit to convert to:
+1. Celsius
+2. Fahrenheit
+3. Kelvin
+Enter the number of the unit to convert to (1/2/3): 1
+32.0 Fahrenheit is 0.0 Celsius
+
+Do you want to convert another temperature? (yes/no): no
+Goodbye!
+#PROGRAMME
+def celsius_to_fahrenheit(celsius):
+    """Convert Celsius to Fahrenheit."""
+    return (celsius * 9/5) + 32
+
+def celsius_to_kelvin(celsius):
+    """Convert Celsius to Kelvin."""
+    return celsius + 273.15
+
+def fahrenheit_to_celsius(fahrenheit):
+    """Convert Fahrenheit to Celsius."""
+    return (fahrenheit - 32) * 5/9
+
+def fahrenheit_to_kelvin(fahrenheit):
+    """Convert Fahrenheit to Kelvin."""
+    return (fahrenheit - 32) * 5/9 + 273.15
+
+def kelvin_to_celsius(kelvin):
+    """Convert Kelvin to Celsius."""
+    return kelvin - 273.15
+
+def kelvin_to_fahrenheit(kelvin):
+    """Convert Kelvin to Fahrenheit."""
+    return (kelvin - 273.15) * 9/5 + 32
+
+def convert_temperature():
+    """Main function to take user input and convert temperature."""
+    print("Temperature Converter")
+    print("Select the unit to convert from:")
+    print("1. Celsius")
+    print("2. Fahrenheit")
+    print("3. Kelvin")
+
+    # Input choice for conversion
+    choice_from = input("Enter the number of the unit to convert from (1/2/3): ")
+
+    # Input value to convert
+    value = float(input("Enter the temperature value to convert: "))
+
+    print("Select the unit to convert to:")
+    print("1. Celsius")
+    print("2. Fahrenheit")
+    print("3. Kelvin")
+
+    # Input choice for conversion target
+    choice_to = input("Enter the number of the unit to convert to (1/2/3): ")
+
+    # Conversion logic based on user choices
+    if choice_from == "1":  # Celsius
+        if choice_to == "2":  # To Fahrenheit
+            result = celsius_to_fahrenheit(value)
+            print(f"{value} Celsius is {result} Fahrenheit")
+        elif choice_to == "3":  # To Kelvin
+            result = celsius_to_kelvin(value)
+            print(f"{value} Celsius is {result} Kelvin")
+        else:
+            print("Invalid choice.")
+    
+    elif choice_from == "2":  # Fahrenheit
+        if choice_to == "1":  # To Celsius
+            result = fahrenheit_to_celsius(value)
+            print(f"{value} Fahrenheit is {result} Celsius")
+        elif choice_to == "3":  # To Kelvin
+            result = fahrenheit_to_kelvin(value)
+            print(f"{value} Fahrenheit is {result} Kelvin")
+        else:
+            print("Invalid choice.")
+    
+    elif choice_from == "3":  # Kelvin
+        if choice_to == "1":  # To Celsius
+            result = kelvin_to_celsius(value)
+            print(f"{value} Kelvin is {result} Celsius")
+        elif choice_to == "2":  # To Fahrenheit
+            result = kelvin_to_fahrenheit(value)
+            print(f"{value} Kelvin is {result} Fahrenheit")
+        else:
+            print("Invalid choice.")
+    
+    else:
+        print("Invalid choice.")
+
+def main():
+    """Run the temperature converter program."""
+    while True:
+        convert_temperature()
+        another = input("\nDo you want to convert another temperature? (yes/no): ").lower()
+        if another != 'yes':
+            print("Goodbye!")
+            break
+
+if __name__ == "__main__":
+    main()
